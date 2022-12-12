@@ -38,7 +38,7 @@ const HomePage = () => {
     return () => {
       fetchAbortController.abort();
     };
-  }, []);
+  }, [Students]);
 
   if (isLoading) {
     return <p> Please wait while we are loading data.. .</p>;

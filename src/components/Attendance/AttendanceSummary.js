@@ -1,15 +1,15 @@
 import { useNavigate } from 'react-router-dom';
-import Card from '../../UI/Card/Card';
-import CardActions from '../../UI/Card/CardActions';
-import CardBody from '../../UI/Card/CardBody';
-import CardHeader from '../../UI/Card/CardHeader';
+import Card from '../../UI/card/Card';
+import CardActions from '../../UI/card/CardActions';
+import CardBody from '../../UI/card/CardBody';
+import CardHeader from '../../UI/card/CardHeader';
 
-const ModulesSummary = (props) => {
+const AttendanceSummary = (props) => {
   // use the navigate function provided by the useNavigate react router hook
   const navigate = useNavigate();
 
   const btnOnClickHandler = () => {
-    navigate(`/Modules/${props.module._id}`);
+    navigate(`/attendances/${props.attendance._id}`);
   };
 
   return (
@@ -17,13 +17,13 @@ const ModulesSummary = (props) => {
       {/* <CardHeader>
         <img
           className="object-scale-down h-[300px]"
-          src={props.product.imgURL}
-          alt={props.product.name}
+          src={props.attendance.imgURL}
+          alt={props.attendance.name}
         />
       </CardHeader> */}
       <CardBody>
-        <h3 className="font-bold">{props.module.name}</h3>
-        <h5>{props.module.id}</h5>
+        <h3 className="font-bold">{props.attendance._id}</h3>
+        <h5>{props.attendance.date} EGP</h5>
       </CardBody>
       <CardActions>
         <button
@@ -37,7 +37,4 @@ const ModulesSummary = (props) => {
   );
 };
 
-export default ModulesSummary;
-
-
-
+export default AttendanceSummary;

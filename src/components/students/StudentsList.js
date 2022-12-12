@@ -15,4 +15,3 @@ const StudentsList = (props) => {
 
 export default StudentsList;
 
-// retrive nested objects in react?

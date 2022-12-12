@@ -25,7 +25,9 @@ const StudentsSummary = (props) => {
         <h3 className="font-bold">{props.student.name}</h3>
         <h5>{props.student.id}</h5>
         <h5>{props.student.email}</h5>
-    
+        
+      
+
       </CardBody>
       <CardActions>
         {/* <button
