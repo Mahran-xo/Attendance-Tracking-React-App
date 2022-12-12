@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 const HomePage = () => {
   const [Students, setStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const viewBtnHandler = () => {
-    // navigate(`/viewmine/${ID}`);
-    // navigate(`/viewPurchase/${ID}`);
+//   const viewBtnHandler = () => {
+//     // navigate(`/viewmine/${ID}`);
+//     // navigate(`/viewPurchase/${ID}`);
 
-};
+// };
   useEffect(() => {
     const fetchAbortController = new AbortController();
     const fetchSignal = fetchAbortController.signal;
