@@ -17,7 +17,7 @@ const StudentsPage = () => {
     const fetchStudents = async () => {
       try {
         // send an HTTP GET request to the get products route we defined in our Express REST API
-        const response = await fetch('http://localhost:3000/Students/RetrieveAllStudents', {
+        const response = await fetch('https://attendancetracking.azurewebsites.net//Students/RetrieveAllStudents', {
           signal: fetchSignal
         });
         // parse the response content to JSON and store it into data variable

@@ -12,7 +12,7 @@ const AddAttendancesPage = () => {
 
     const fetchAttendances = async () => {
       try {
-        const response = await fetch('http://localhost:3000/Attendance', {
+        const response = await fetch('https://attendancetracking.azurewebsites.net//Attendance', {
           signal: fetchSignal,
           method:"POST"
         });

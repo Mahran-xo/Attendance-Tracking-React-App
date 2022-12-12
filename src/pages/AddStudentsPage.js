@@ -12,7 +12,7 @@ const AddStudentsPage = () => {
 
     const fetchStudents = async () => {
       try {
-        const response = await fetch('http://localhost:3000/Students', {
+        const response = await fetch('https://attendancetracking.azurewebsites.net//Students', {
           signal: fetchSignal,
           method:"POST"
         });

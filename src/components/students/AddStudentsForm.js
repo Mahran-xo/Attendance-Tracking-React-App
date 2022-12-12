@@ -12,7 +12,7 @@ const AddStudentForm = () => {
 
   const submitHandler = async (formData) => {
     try {
-      const response = await fetch('http://localhost:3000/Students', {
+      const response = await fetch('https://attendancetracking.azurewebsites.net//Students', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
