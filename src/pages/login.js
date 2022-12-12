@@ -1,6 +1,52 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
+const userN = () =>{
+    const [Title,setuser] = useState([]);
+}
+
+const passW = () =>{
+    const [title,setpass] = useState([]);
+}
+
+const handleSubmit = (e) =>{
+    e.preventDefault()
+    const login = {username,password}
+    fetch('http://localhost8000/ATTENDANCE-TRACKING-REACT-APP')
+    method: 'GET'
+   
+
+
+
+}
+function Dashboard() 
+    function renderFn({ location }) 
+      
+      if (!Userfront.accessToken()) {
+        return (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        );
+      }
+
+      function Dashboard() 
+        function renderFn({ location }) 
+          // If the user is not logged in, redirect to login
+          if (!Userfront.accessToken()) {
+            return (
+              <link 
+                to={{
+                  pathname: "/StudentDashhboard",
+                  state: { from: location },
+                }}
+              />
+            );
+          }
 
 
 export default function Login() {
@@ -15,13 +61,16 @@ export default function Login() {
                 <h2 className='text-4xl font-bold text-center py-6'>Attendance tracking.</h2>
                 <div className='flex flex-col py-2'>
                     <label>Username</label>
-                    <input className='border p-2' type="text" />
+                    <input onChange={(u) => setTitle(u.target.value)}
+                    className='border p-2' type="text" />
                 </div>
                 <div className='flex flex-col py-2'>
                     <label>Password</label>
-                    <input className='border p-2' type="password" />
+                    <input onChange={(p) => settitle(p.target.value)}
+                     className='border p-2' type="password" />
                 </div>
-                <button className='border w-full my-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white'>Sign In</button>
+                <button onSubmit={handleSubmit}
+                className='border w-full my-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white'>Sign In</button>
                 <div className='flex justify-between'>
                     <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
                      

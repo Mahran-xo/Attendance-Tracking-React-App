@@ -1,5 +1,34 @@
 import React from 'react';
 
+
+
+
+
+const userN = () =>{
+  const [Title,setuser] = useState([]);
+}
+
+
+const email = () =>{
+  const [title,setemail] = useState([]);
+}
+
+const AbsenceF = () =>{
+  const [Title,setabsence] = useState([]);
+}
+
+const handleSubmit = (e) =>{
+  e.preventDefault()
+  const AbsenceForm = {username,password,email}
+  fetch('http://localhost8000/ATTENDANCE-TRACKING-REACT-APP')
+  method: 'POST'
+ 
+
+
+
+}
+
+
 const AbsenceForm = () => {
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden ">
@@ -11,7 +40,7 @@ const AbsenceForm = () => {
           <div className="mb-2">
             <label>
               <span className="text-gray-700">Your name</span>
-              <input
+              <input onChange={(u) => setTitle(u.target.value)}
                 type="text"
                 name="name"
                 className="
@@ -33,7 +62,7 @@ const AbsenceForm = () => {
           <div className="mb-2">
             <label>
               <span className="text-gray-700">email</span>
-              <input
+              <input onChange={(e) => setTitle(e.target.value)}
                 name="email"
                 type="email"
                 className="
@@ -55,7 +84,8 @@ const AbsenceForm = () => {
           </div>
           <div className="mb-2">
             <label>
-              <span class="text-gray-700">reason for Absence</span>
+              <span onChange={(a) => setTitle(a.target.value)}
+              class="text-gray-700">reason for Absence</span>
               <textarea
                 name="message"
                 className="

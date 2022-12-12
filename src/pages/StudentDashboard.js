@@ -18,12 +18,7 @@ export default function StudentDashboard() {
         <button  className='border w-full my-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white'>make absence form</button>
         </Link>
     </div>
-    <div>
-        <Link to="/SignUp">
-        <button className='border w-full my-5 py-2 bg-green-600 hover:bg-indigo-500 text-white'>add Attendace</button>
-        </Link>
-    </div>
-
+    
    </>
 
 
