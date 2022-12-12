@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import StudentsList from '../components/students/StudentsList';
-import { useNavigate } from 'react-router-dom';
+
 
 const HomePage = () => {
   const [Students, setStudents] = useState([]);
