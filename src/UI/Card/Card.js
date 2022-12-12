@@ -1,10 +1,9 @@
-const Card =(props)=>{
-  return(
-    <div className="flex flex-col items-center gap-5 rounded-xl bg-red-500 w-[400px] aspect-square overflow-hidden">
+const Card = (props) => {
+  return (
+    <div className="flex flex-col items-center gap-8 rounded-xl bg-slate-200 w-[500px] aspect-square overflow-hidden">
       {props.children}
     </div>
   );
 };
-export default Card;
 
-//css example??
+export default Card;
