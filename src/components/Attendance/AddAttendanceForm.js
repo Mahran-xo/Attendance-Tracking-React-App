@@ -22,7 +22,7 @@ const AddAttendanceForm = (props) => {
   const submitHandler = async (formData) => {
 
     try {
-      const response = await fetch('https://attendancetracking.azurewebsites.net//Attendance', {
+      const response = await fetch('https://attendancetracking.azurewebsites.net/Attendance', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

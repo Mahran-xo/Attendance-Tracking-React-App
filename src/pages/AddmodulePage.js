@@ -11,7 +11,7 @@ const AddmodulePage = () => {
 
     const fetchModules = async () => {
       try {
-        const response = await fetch('https://attendancetracking.azurewebsites.net//Modules/RetrieveAllModule', {
+        const response = await fetch('https://attendancetracking.azurewebsites.net/Modules/RetrieveAllModule', {
           signal: fetchSignal
         });
         const data = await response.json();

@@ -8,7 +8,7 @@ const AddModuleForm = (props) => {
 
   const submitHandler = async (formData) => {
     try {
-      const response = await fetch('https://attendancetracking.azurewebsites.net//Modules', {
+      const response = await fetch('https://attendancetracking.azurewebsites.net/Modules', {
         method: 'POST',
        
       });
