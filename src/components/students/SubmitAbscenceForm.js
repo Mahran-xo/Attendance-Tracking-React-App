@@ -11,7 +11,7 @@ const SubmitAbscenceForm = () => {
 
   const submitHandler = async (formData) => {
     try {
-      const response = await fetch('https://attendancetracking.azurewebsites.net/Absence', {
+      const response = await fetch('https://attendance-tracking.azurewebsites.net//Absence', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

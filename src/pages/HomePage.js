@@ -18,7 +18,7 @@ const HomePage = () => {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://attendancetracking.azurewebsites.net/Students/RetrieveAllStudents', {
+        const response = await fetch('https://attendance-tracking.azurewebsites.net//Students/RetrieveAllStudents', {
           signal: fetchSignal
         });
         const data = await response.json();

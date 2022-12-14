@@ -12,7 +12,7 @@ const AttendancePage = () => {
 
     const fetchAttendances = async () => {
       try {
-        const response = await fetch('https://attendancetracking.azurewebsites.net/Attendance/GenerateAttendance', {
+        const response = await fetch('https://attendance-tracking.azurewebsites.net//Attendance/GenerateAttendance', {
           signal: fetchSignal
         });
         const data = await response.json();
