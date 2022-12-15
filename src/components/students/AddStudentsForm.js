@@ -1,18 +1,23 @@
-
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-
+import AuthContext from '../../store/authContext';
+import FormInputError from '../../UI/form/FormInputError';
+import SelectInput from '../../UI/form/SelectInput';
+import TextAreaInput from '../../UI/form/TextAreaInput';
 import TextInput from '../../UI/form/TextInput';
 
-
-
-const AddStudentForm = () => {
+const AddStudentForm = (props) => {
 
 
   const { register, handleSubmit, formState } = useForm();
 
+  const modulesOptions = props.module.map((s) => {
+    return { name: s.moduleName, value: s._id };
+  });
+
   const submitHandler = async (formData) => {
     try {
-      const response = await fetch('https://attendance-tracking.azurewebsites.net//Students', {
+      const response = await fetch('https://attendance-tracking.azurewebsites.net/Students', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -44,6 +49,10 @@ const AddStudentForm = () => {
         register={register}
         validation={{ required: true }}
       />
+      {formState.errors.name && (
+        <FormInputError>Product name must not be empty</FormInputError>
+      )}
+
       <TextInput
         label="id"
         type="text"
@@ -52,6 +61,10 @@ const AddStudentForm = () => {
         validation={{ required: true }}
       />
 
+      {formState.errors.id && (
+        <FormInputError>Product name must not be empty</FormInputError>
+      )}
+
       <TextInput
         label="Email"
         type="text"
@@ -59,7 +72,19 @@ const AddStudentForm = () => {
         register={register}
         validation={{ required: true }}
       />
- 
+
+      <SelectInput
+        label="Module"
+        name="module"
+        register={register}
+        validation={{ required: true }}
+        options={modulesOptions}
+      />
+
+       {formState.errors.module && (
+        <FormInputError>Product name must not be empty</FormInputError>
+      )}
+
       <button type="submit" className="bg-white rounded-xl my-4 py-2 px-8 self-center">
         Add Student
       </button>

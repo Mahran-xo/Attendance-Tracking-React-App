@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import TextInput from '../../UI/form/TextInput';
 
 
-
+import Multiselect from 'multiselect-react-dropdown';
 
 import SelectInput from '../../UI/form/SelectInput';
 
@@ -16,13 +16,13 @@ const AddAttendanceForm = (props) => {
   const { register, handleSubmit, formState } = useForm();
 
 
-  // const modulesOptions = props.moduleName.map((s) => {
-  //   return { moduleName: s.name, value: s._id };
-  // });
+  const modulesOptions = props.module.map((s) => {
+    return { name: s.moduleName, value: s._id };
+  });
   const submitHandler = async (formData) => {
 
     try {
-      const response = await fetch('https://attendance-tracking.azurewebsites.net//Attendance', {
+      const response = await fetch('https://attendance-tracking.azurewebsites.net/Attendance', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -48,26 +48,20 @@ const AddAttendanceForm = (props) => {
       onSubmit={handleSubmit(submitHandler)}
     >
       <TextInput
-        label="LectureHall"
+        label="lectureHall"
         type="text"
-        name="LectureHall"
+        name="lectureHall"
         register={register}
         validation={{ required: true }}
       />
-      <TextInput
-        label="moduleId"
-        type="text"
-        name="id"
-        register={register}
-        validation={{ required: true }}
-      />
-      {/* <SelectInput
+      <SelectInput
         label="Module"
-        name="supplierId"
+        name="moduleId"
         register={register}
         validation={{ required: true }}
-        // options={modulesOptions}
-      /> */}
+        options={modulesOptions}
+
+      />
  
       <button type="submit" className="bg-white rounded-xl my-4 py-2 px-8 self-center">
         Add Attendance
@@ -77,3 +71,7 @@ const AddAttendanceForm = (props) => {
 };
 
 export default AddAttendanceForm;
+
+
+
+

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import AddStudentsForm from '../components/students/AddStudentsForm';
 
 const AddStudentsPage = () => {
-  const [Students, setStudents] = useState([]);
+  const [Module, setModules] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -12,9 +12,8 @@ const AddStudentsPage = () => {
 
     const fetchStudents = async () => {
       try {
-        const response = await fetch('https://attendance-tracking.azurewebsites.net//Students', {
+        const response = await fetch('https://attendance-tracking.azurewebsites.net/Modules/RetrieveAllModule', {
           signal: fetchSignal,
-          method:"POST"
         });
         const data = await response.json();
 
@@ -22,7 +21,7 @@ const AddStudentsPage = () => {
           throw Error(data.error);
         }
 
-        setStudents(data.Students);
+        setModules(data.Module);
         setIsLoading(false);
       } catch (err) {
         console.log(err.message);
@@ -42,7 +41,7 @@ const AddStudentsPage = () => {
 
   return (
     <div>
-      <AddStudentsForm students={Students} />
+      <AddStudentsForm module={Module} />
     </div>
   );
 };

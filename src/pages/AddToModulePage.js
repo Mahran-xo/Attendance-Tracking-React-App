@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
 
-import AddAttendancesForm from '../components/Attendance/AddAttendanceForm';
+import AddToModuleForm from '../components/students/AddToModuleForm';
 
-const AddAttendancesPage = () => {
-  const [Attendances, setAttendances] = useState([]);
+const AddToModulePage = () => {
+  const [Module, setModules] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchAbortController = new AbortController();
     const fetchSignal = fetchAbortController.signal;
 
-    const fetchAttendances = async () => {
+    const fetchStudents = async () => {
       try {
-        const response = await fetch('https://attendance-tracking.azurewebsites.net//Attendance', {
+        const response = await fetch('https://attendance-tracking.azurewebsites.net/Modules/RetrieveAllModule', {
           signal: fetchSignal,
-          method:"POST"
         });
         const data = await response.json();
 
@@ -22,14 +21,14 @@ const AddAttendancesPage = () => {
           throw Error(data.error);
         }
 
-        setAttendances(data.Attendances);
+        setModules(data.Module);
         setIsLoading(false);
       } catch (err) {
         console.log(err.message);
       }
     };
 
-    fetchAttendances();
+    fetchStudents();
 
     return () => {
       fetchAbortController.abort();
@@ -37,14 +36,15 @@ const AddAttendancesPage = () => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading list of existing attendances...</p>;
+    return <p>Loading list of existing students...</p>;
   }
 
   return (
     <div>
-      <AddAttendancesForm attendance={Attendances} />
+      <AddToModuleForm module={Module} />
+      
     </div>
   );
 };
 
-export default AddAttendancesPage;
+export default AddToModulePage;

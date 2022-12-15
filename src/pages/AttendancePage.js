@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import AddAttendanceForm from '../components/Attendance/AddAttendanceForm';
+import AddAttendanceForm from '../components/students/AddAttendanceForm';
 
 const AttendancePage = () => {
-  const [attendances, setAttendances] = useState([]);
+  const [Module, setModules] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const AttendancePage = () => {
 
     const fetchAttendances = async () => {
       try {
-        const response = await fetch('https://attendance-tracking.azurewebsites.net//Attendance/GenerateAttendance', {
+        const response = await fetch('https://attendance-tracking.azurewebsites.net/Modules/RetrieveAllModule', {
           signal: fetchSignal
         });
         const data = await response.json();
@@ -21,7 +21,7 @@ const AttendancePage = () => {
           throw Error(data.error);
         }
 
-        setAttendances(data.attendances);
+        setModules(data.Module);
         setIsLoading(false);
       } catch (err) {
         console.log(err.message);
@@ -41,7 +41,7 @@ const AttendancePage = () => {
 
   return (
     <div>
-      <AddAttendanceForm attendances={attendances} />
+      <AddAttendanceForm module={Module} />
     </div>
   );
 };

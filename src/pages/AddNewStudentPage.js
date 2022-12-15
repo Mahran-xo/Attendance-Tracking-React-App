@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import AddModuleForm from '../components/students/AddModuleForm';
+import NewStudentForm from '../components/students/NewStudentForm';
 
-const AddModulePage = () => {
+const AddNewStudentPage = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -40,10 +40,9 @@ const AddModulePage = () => {
 
     return (
         <div>
-        <AddModuleForm/>
-        
+        <NewStudentForm/>
         </div>
   );
 };
 
-export default AddModulePage;
+export default AddNewStudentPage;

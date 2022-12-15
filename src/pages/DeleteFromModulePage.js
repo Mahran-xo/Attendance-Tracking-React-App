@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import AddModuleForm from '../components/students/AddModuleForm';
+import DeleteFromModuleForm from '../components/students/DeleteFromModuleForm';
 
-const AddModulePage = () => {
-
+const DeleteFromModulePage = () => {
+    const [Module, setModules] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ const AddModulePage = () => {
 
         const fetchStudents = async () => {
             try {
-                const response = await fetch('https://attendance-tracking.azurewebsites.net/Students/RetrieveAllStudents', {
+                const response = await fetch('https://attendance-tracking.azurewebsites.net/Modules/RetrieveAllModule', {
                     signal: fetchSignal,
                 });
                 const data = await response.json();
@@ -20,7 +20,7 @@ const AddModulePage = () => {
                 if (!response.ok) {
                     throw Error(data.error);
                 }
-
+                setModules(data.Module);
                 setIsLoading(false);
             } catch (err) {
                 console.log(err.message);
@@ -40,10 +40,10 @@ const AddModulePage = () => {
 
     return (
         <div>
-        <AddModuleForm/>
+        <DeleteFromModuleForm module={Module}/>
         
         </div>
   );
 };
 
-export default AddModulePage;
+export default DeleteFromModulePage;

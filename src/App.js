@@ -1,15 +1,18 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AuthProvider from './store/AuthProvider';
 import SubmitAbscenceForm from './pages/SubmitAbscenceForm'
-import AddStudentForm from './components/students/AddStudentsForm';
+import AddStudentsPage from './pages/AddStudentsPage';
 import HomePage from './pages/HomePage';
 import StudentsPage from './pages/StudentsPage';
+import StudentPage from './pages/StudentPage';
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import Layout from './UI/layout/Layout';
 import AttendancePage from './pages/AttendancePage';
-import AddmodulePage from './pages/AddmodulePage';
-// import ProdutPage from './pages/ProdutPage';
+import AddModulePage from './pages/AddModulePage';
+import AddNewStudentsPage from './pages/AddNewStudentPage';
+import AddToModulePage from './pages/AddToModulePage';
+import DeleteFromModulePage from './pages/DeleteFromModulePage';
 
 const App = () => {
   return (
@@ -18,11 +21,14 @@ const App = () => {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/Students/RetrieveAllStudents" element={<StudentsPage />} />
-            <Route path="/Students" element={<AddStudentForm />} />
-            <Route path="/SubmitAbscenceForm/:studentId/:module" element={<SubmitAbscenceForm />}/>
-            <Route path="/AddModule" element={<AddmodulePage />} />
+            <Route path="/Students/:studentId" element={<StudentPage />} />
+            <Route path="/Students" element={<StudentsPage/>} />
+            <Route path="/AddStudentsToModule/:studentId" element={<AddToModulePage/>} />
+            <Route path="/AddStudents" element={<AddNewStudentsPage/>} />
+            <Route path="/SubmitAbscenceForm/:studentId" element={<SubmitAbscenceForm />}/>
+            <Route path="/AddModule" element={<AddModulePage />} />
             <Route path="/Attendance" element={<AttendancePage/>}/>
+            <Route path="/DeleteFromModule/:studentId" element={<DeleteFromModulePage/>}/>
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/signin" element={<SigninPage />} />
           </Routes>

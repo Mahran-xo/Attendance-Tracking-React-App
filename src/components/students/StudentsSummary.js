@@ -6,36 +6,33 @@ import CardHeader from '../../UI/Card/CardHeader';
 
 const StudentsSummary = (props) => {
   // use the navigate function provided by the useNavigate react router hook
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const btnOnClickHandler = () => {
-  //   navigate(`/Students/${props.Students._id}`);
-  // };
-
+  const btnOnClickHandler = () => {
+    navigate(`/Students/${props.student._id}`);
+  };
   return (
     <Card>
-      {/* <CardHeader>
-        <img
-          className="object-scale-down h-[300px]"
-          src={props.product.imgURL}
-          alt={props.product.name}
-        />
-      </CardHeader> */}
       <CardBody>
         <h3 className="font-bold">{props.student.name}</h3>
         <h5>{props.student.id}</h5>
         <h5>{props.student.email}</h5>
+        <h5>{props.student.module.map((p) =>(
+          <div>
+         <li>{ p.moduleName }</li> 
+         <li>{p.moduleCode}</li>
+          
+          </div>
+        ))}</h5>
         
-      
-
       </CardBody>
       <CardActions>
-        {/* <button
+        <button
           className="bg-white py-3 px-10 font-bold rounded-xl"
           onClick={btnOnClickHandler}
         >
           View
-        </button> */}
+        </button>
       </CardActions>
     </Card>
   );

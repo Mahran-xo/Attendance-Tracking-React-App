@@ -1,17 +1,24 @@
 import { useForm } from 'react-hook-form';
-
+import { useParams } from 'react-router-dom';
+import SelectInput from '../../UI/form/SelectInput';
 import TextInput from '../../UI/form/TextInput';
 
 
 
-const SubmitAbscenceForm = () => {
-
+const SubmitAbscenceForm = (props) => {
+  const params = useParams();
+  const studentId = params.studentId ;
 
   const { register, handleSubmit, formState } = useForm();
 
+  const modulesOptions = props.module.map((s) => {
+    return { name: s.moduleName, value: s._id };
+  });
+  
+
   const submitHandler = async (formData) => {
     try {
-      const response = await fetch('https://attendance-tracking.azurewebsites.net//Absence', {
+      const response = await fetch(`https://attendance-tracking.azurewebsites.net/Absence/${studentId} `, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -42,6 +49,14 @@ const SubmitAbscenceForm = () => {
         name="reason"
         register={register}
         validation={{ required: true }}
+
+      />
+        <SelectInput
+        label="module"
+        name="module"
+        register={register}
+        validation={{ required: true }}
+        options={modulesOptions}
       />
  
       <button type="submit" className="bg-white rounded-xl my-4 py-2 px-8 self-center">

@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import StudentsList from '../components/students/StudentsList';
-import ModulesList from '../components/modules/ModulesList';
 
 const StudentsPage = () => {
   // let's define a state for products
   const [Students, setStudents] = useState([]);
-  const [module, setModules] = useState([]);
 
   // let's define a state for loading
   const [isLoading, setIsLoading] = useState(true);
+
+  
 
   useEffect(() => {
     const fetchAbortController = new AbortController();
@@ -17,7 +17,7 @@ const StudentsPage = () => {
     const fetchStudents = async () => {
       try {
         // send an HTTP GET request to the get products route we defined in our Express REST API
-        const response = await fetch('https://attendance-tracking.azurewebsites.net//Students/RetrieveAllStudents', {
+        const response = await fetch('https://attendance-tracking.azurewebsites.net/Students/RetrieveAllStudents', {
           signal: fetchSignal
         });
         // parse the response content to JSON and store it into data variable
@@ -31,7 +31,7 @@ const StudentsPage = () => {
 
         // we now need to set our component state to the products we fetched
         setStudents(data.Students);
-        setModules(data.module);
+        console.log(data)
 
         // after we set the products' state, let's set the loading state to false
         setIsLoading(false);
@@ -53,8 +53,7 @@ const StudentsPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <StudentsList student={Students} />
-      <ModulesList module = {module}/>
+      <StudentsList Students={Students} />
     </div>
   );
 };

@@ -3,63 +3,52 @@ import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import TextInput from '../UI/form/TextInput';
+import SubmitAbscenceForm from '../components/students/SubmitAbscenceForm';
 
-const SubmitAbscenceForm = () => {
-
-    const [Students, setStudents] = useState([]);
+const SubmitAbscence = () => {
+    const [Module, setModules] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchAbortController = new AbortController();
+      const fetchSignal = fetchAbortController.signal;
 
-    const studentId = "638d0c4fd5fde209c75837fa";
-    const module = "638d1d4fc01fc9b4497d2c7c";
-    
-
-    const { register, handleSubmit, formState } = useForm();
-
-    const submitHandler = async (formData) => {
+      
+  
+      const fetchStudents = async () => {
         try {
-
-            const response = await fetch(`https://attendance-tracking.azurewebsites.net//Absence/${studentId}/${module}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw Error(data.error);
-            }
-
-            setStudents(data.abs);
-            setIsLoading(false);
+          const response = await fetch('https://attendance-tracking.azurewebsites.net/Modules/RetrieveAllModule', {
+            signal: fetchSignal,
+          });
+          const data = await response.json();
+  
+          if (!response.ok) {
+            throw Error(data.error);
+          }
+  
+          setModules(data.Module);
+          setIsLoading(false);
         } catch (err) {
-            console.log(err.message);
+          console.log(err.message);
         }
-    };
-
-
+      };
+  
+      fetchStudents();
+  
+      return () => {
+        fetchAbortController.abort();
+      };
+    }, []);
+  
+    if (isLoading) {
+      return <p>Loading ...</p>;
+    }
+  
     return (
-        <div>
-            <form
-                className="flex  flex-col p-10 gap-5 bg-gray-800 w-fit"
-                onSubmit={handleSubmit(submitHandler)}
-            >
-                <TextInput
-                    label="Reason"
-                    type="text"
-                    name="reason"
-                    register={register}
-                    validation={{ required: true }}
-                />
-                <button type="submit" className="bg-white rounded-xl my-4 py-2 px-8 self-center">
-                    Add Abs.
-                </button>
-            </form>
-        </div>
+      <div>
+        <SubmitAbscenceForm module={Module} />
+      </div>
     );
-};
-
-export default SubmitAbscenceForm;
+  };
+  
+  export default SubmitAbscence;
